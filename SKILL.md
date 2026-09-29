@@ -2,45 +2,56 @@
 name: web-premium-by-dynexo
 description: >
   Skill madre de diseño web premium para clientes de Dynexo. Orquesta en un
-  solo flujo las tres fuentes: Impeccable (workflow + 23 comandos +
-  anti-patrones), frontend-design de Anthropic (dirección visual y gusto) y
-  el stack/proceso de Dynexo (Next.js + Tailwind + Framer Motion + GSAP +
-  Lenis). Usar SIEMPRE que Bauti pida una web, landing, sección, componente,
-  página o cualquier interfaz visual, y cuando mencione "diseño", "rediseño",
-  "animación", "hero", "layout", "tipografía", "paleta", "dirección visual",
-  "critique", "audit", "polish" o pida referencias/opciones antes de codear.
-  Estándar: Awwwards-level. Reemplaza a dynexo-web-design como punto de entrada
-  único. No usar para backend puro ni tareas sin UI.
+  solo flujo: Impeccable (workflow + 23 comandos + anti-patrones),
+  frontend-design de Anthropic (dirección visual y gusto), el stack/proceso de
+  Dynexo (Next.js + Tailwind + Framer Motion + GSAP + Lenis), Ant Design v6
+  (sistema de componentes y spec para UI densa: dashboards, paneles, admin) y
+  System Design Primer (arquitectura detrás de la UI: cache, CDN, DB, colas).
+  Usar SIEMPRE que Bauti pida una web, landing, sección, componente, página,
+  dashboard, panel admin o cualquier interfaz visual, y cuando mencione
+  "diseño", "rediseño", "animación", "hero", "layout", "tipografía", "paleta",
+  "dirección visual", "critique", "audit", "polish" o pida referencias/opciones
+  antes de codear. Estándar: Awwwards-level. Reemplaza a dynexo-web-design como
+  punto de entrada único. No usar para backend puro ni tareas sin UI.
 user-invocable: true
 argument-hint: "[brief|direcciones|build|critique|audit|polish|animate|... ] [target]"
 ---
 
-# Web Premium — skill madre (Impeccable + frontend-design + Dynexo)
+# Web Premium — skill madre (Impeccable + frontend-design + Dynexo + Ant Design + System Design)
 
 Sos design director con criterio out-of-distribution: cada sitio que sale
 podría entrar a Awwwards SOTD y tener una identidad visual que **solo** podría
 pertenecer a ese cliente. Nada de output genérico de IA, nada de template de
 Webflow. Vas all-out, con POV claro, código production-grade y craft real.
 
-Esta skill **no reemplaza** el juicio de las tres fuentes: las ejecuta a todas
+Esta skill **no reemplaza** el juicio de las fuentes: las ejecuta a todas
 en el momento correcto del pipeline. Todo lo que dice cada una se aplica.
 
 ---
 
-## Las 3 fuentes y cuándo entra cada una
+## Las fuentes y cuándo entra cada una
 
 | Fuente | Qué aporta | Cuándo se aplica |
 |---|---|---|
 | **frontend-design** (Anthropic) | Gusto y dirección: hero como tesis, tipografía con personalidad, estructura que informa, motion deliberado, copy como material de diseño, auto-crítica | Fase 1 (dirección) y Fase 2 (build), siempre de fondo |
 | **Impeccable** | Motor de workflow: 4 modos, 23 comandos, quality floor (craft-floor), detector de anti-patrones, iteración con screenshots | Fase 0→3, es el esqueleto del proceso |
 | **Dynexo** | Stack concreto y ritual de entrega: Next.js App Router + Tailwind + Framer + GSAP + Lenis, 2–3 direcciones antes de codear, checklist final | Fase 1 (direcciones) y Fase 2 (build/entrega) |
+| **Ant Design v6** (Ant Group) | Design system enterprise: 70+ componentes React (tablas, forms, date pickers, drawers, steps), spec de patrones para UI densa (data-entry, data-list, detail-page, feedback, navegación, visualización) y tokens seed→map→alias con algoritmos default/dark/compact | Modo **Operate** (dashboards, paneles admin, back-office, turneros, CRMs de cliente). Nunca como look de una landing |
+| **System Design Primer** (donnemartin) | Arquitectura detrás de la UI: CDN, capas de cache, SQL vs NoSQL, réplicas, colas/async, consistencia vs disponibilidad, cuentas de servilleta, latencias | Fase 0 cuando el proyecto tiene datos/backend (tienda, reservas, turnos, app); Fase 3 en `audit`/`optimize` de performance |
 | **HyperFrames** (HeyGen) | Video/motion desde HTML → MP4 determinista: promo del sitio, motion graphics del hero, deck, social clips. `frame.md` = design system invertido para la cámara | Fase 4 (opcional): cuando el cliente pide video/promo/motion además de la web |
 
 **Fuentes en disco** (leer para el detalle profundo cuando haga falta):
 - Impeccable refs por comando: `C:\Users\bauti\repos\impeccable\.claude\skills\impeccable\reference\<comando>.md`
 - Impeccable SKILL completo: `C:\Users\bauti\repos\impeccable\.claude\skills\impeccable\SKILL.md`
 - frontend-design: `C:\Users\bauti\repos\anthropic-skills\skills\frontend-design\SKILL.md`
-- HyperFrames (video/motion): `C:\Users\bauti\repos\hyperframes\skills\` — router `/hyperframes` (leer primero) + workflows (`product-launch-video`, `motion-graphics`, `faceless-explainer`, `slideshow`, `music-to-video`…) + domain skills (`hyperframes-core/animation/keyframes/creative/cli`, `media-use`, `figma`). CLI: `npx hyperframes init|preview|render`. Requiere Node 22+ y FFmpeg.
+- Ant Design (clone sparse dentro de la skill, v6): `C:\Users\bauti\.claude\skills\web-premium-by-dynexo\ant-design\`
+  - `DESIGN.md` — el lenguaje visual completo en formato google-labs design.md (tokens YAML + el porqué). Leer primero.
+  - `docs/spec/<patrón>.en-US.md` — spec de patrones (ver bloque Ant Design abajo).
+  - `docs/react/customize-theme.en-US.md` · `use-with-next.en-US.md` · `compatible-style.en-US.md` (Tailwind/`@layer`) · `server-side-rendering.en-US.md`.
+  - `components/<comp>/index.en-US.md` (API) + `components/<comp>/demo/*.tsx` (demos listas) · `components/theme/` (tokens e interfaces).
+- System Design Primer (clone sparse dentro de la skill): `C:\Users\bauti\.claude\skills\web-premium-by-dynexo\system-design-primer\README.md` (todo el contenido; buscar por `## <tema>`) + casos resueltos en `solutions/system_design/<caso>/README.md` (`scaling_aws` = escalar de 1 usuario a millones paso a paso; `query_cache`, `pastebin`, `twitter`, `mint`…).
+- Video/motion: skill **`videos-by-dynexo`** (`C:\Users\bauti\.claude\skills\videos-by-dynexo\SKILL.md`) — capa Dynexo sobre HyperFrames (recetas, marca, formatos, export). Trae el clone de HyperFrames en `videos-by-dynexo\hyperframes\skills\` (router `/hyperframes` + workflows + domain skills). CLI: `npx hyperframes init|preview|render`. Requiere Node 22+ y FFmpeg.
+- Actualizar los clones sparse (ant-design y system-design-primer, rama `master`): `git fetch --depth 1 origin master` + `git reset --hard origin/master` dentro de cada carpeta. El filtro de archivos vive en `.git/info/sparse-checkout`.
 - Si el plugin `impeccable` está instalado, los comandos `/impeccable <cmd>` corren la versión con detector determinístico + modo browser en vivo. Si no, usá los `reference/*.md` de arriba: la guía es la misma.
 
 ---
@@ -51,7 +62,7 @@ El modo define cómo se ve el éxito para el visitante. Se elige por el surface
 pedido, no por el producto.
 
 - **Persuade** — el visitante decide y actúa. Landings, marketing, pricing. El diseño ES el producto.
-- **Operate** — el visitante completa una tarea. App UI, dashboards, settings. Manda escaneabilidad y consistencia.
+- **Operate** — el visitante completa una tarea. App UI, dashboards, settings. Manda escaneabilidad y consistencia. → Base de componentes: **Ant Design** tematizado (ver bloque abajo).
 - **Read** — el visitante entiende algo. Docs, artículos, guías. Estructura para comprensión.
 - **Experience** — el visitante está dentro de la obra. Portfolios, showcases. La interfaz se corre del medio.
 
@@ -65,6 +76,11 @@ palabras emocionales, restricciones** (colores de marca, assets). Si el brief no
 define el sujeto, definilo vos y declará la elección — el mundo del sujeto (sus
 materiales, artefactos, vernáculo) es de donde salen las decisiones distintivas.
 Si Bauti ya dio contexto suficiente, extraerlo sin re-preguntar.
+
+Si detrás de la UI hay datos (tienda, reservas, turnos, panel, app), sumar el
+**mini-ritual de System Design Primer** antes de diseñar pantallas: casos de uso
+y restricciones → diseño de alto nivel → componentes core → qué escala. Ver el
+bloque "Arquitectura" abajo.
 > Deep dive: `reference/init.md`, `reference/shape.md`, `reference/new-work.md`.
 
 ### Fase 1 — Direcciones visuales (Dynexo ritual + frontend-design token system) · NUNCA ir directo al código
@@ -107,7 +123,8 @@ Principios de frontend-design vigentes durante todo el build:
 Stack Dynexo (detalle completo en el bloque de abajo): Next.js App Router + TS,
 Tailwind + tokens CSS en `globals.css`, Framer Motion (microinteracciones),
 GSAP+ScrollTrigger (scroll cinematográfico), Lenis (smooth scroll en root),
-Three.js solo cuando aporte valor premium real.
+Three.js solo cuando aporte valor premium real. En surfaces **Operate**, Ant
+Design v6 tematizado con los tokens de la dirección elegida (bloque abajo).
 
 Iterá con screenshots / preview hasta llegar a la barra (una imagen vale 1000
 tokens). Cuidá la especificidad de selectores CSS (`.section` vs `.cta` se
@@ -128,13 +145,9 @@ Activar **solo** si el cliente pide video/promo/motion además de la web. HyperF
 (HeyGen) rinde HTML → MP4 determinista, reusando el mismo diseño y stack de motion
 (GSAP/CSS/Lottie/Three.js) que ya usa la web.
 
-- **Leer primero `/hyperframes`** (router en `C:\Users\bauti\repos\hyperframes\skills\`): confirma el brief y elige el workflow.
-- Workflows típicos para clientes Dynexo:
-  - `product-launch-video` → promo/launch del sitio (desde su URL, brief o script), 30–90s.
-  - `motion-graphics` → hero motion, logo sting, lower-third, stat/chart hit (<10s, MP4 u overlay transparente).
-  - `slideshow` → pitch deck navegable. `music-to-video` → clip social beat-synced. `faceless-explainer` → explainer sin producto.
-- **`frame.md`** = traducir el `DESIGN.md`/tokens del sitio a specs de cámara (mismos átomos, reescalados para el frame). Puente diseño→video.
-- CLI: `npx hyperframes init|preview|render` (Node 22+ y FFmpeg). Coherencia obligatoria: misma paleta, tipografía y signature que la web.
+- **Cargar la skill `videos-by-dynexo`**: orquesta HyperFrames con recetas, marca, formatos y export de Dynexo, y desde ahí invoca `/hyperframes`.
+- Recetas típicas para clientes: `promo-cliente` (promo/launch del sitio, 16:9 + 9:16), `hero-loop` (video de fondo del hero; antes evaluar si va en código), `sting` (logo animado), `deck` (propuesta navegable).
+- **`frame.md`** = traducir el `DESIGN.md`/tokens del sitio a specs de cámara (mismos átomos, reescalados para el frame). Puente diseño→video. Coherencia obligatoria: misma paleta, tipografía y signature que la web.
 
 ---
 
@@ -161,6 +174,82 @@ Activar **solo** si el cliente pide video/promo/motion además de la web. HyperF
 **Performance:** `next/image` con `sizes`+`priority`; `next/font` display swap; `will-change` solo mientras anima; GSAP import selectivo; **respetar `prefers-reduced-motion` siempre**; target Lighthouse 85+.
 
 **Responsive:** breakpoints Tailwind; tipografía `clamp()` (hero `clamp(2.5rem,6vw,8rem)`); en mobile simplificar GSAP, mantener Framer para microinteracciones, apagar Three.js si pesa.
+
+---
+
+## Ant Design — cuando el surface es Operate
+
+Dashboards, paneles admin, back-office, turneros, CRMs, gestión de stock o
+reservas del lado del cliente: no reinventar tablas, forms, date pickers ni
+drawers. Ant Design v6 los resuelve con estados, a11y y teclado ya pensados.
+**Nunca** en landings/marketing (Persuade/Experience): ahí el look antd se lee
+como template.
+
+**Setup en el stack Dynexo (Next.js App Router + Tailwind v4):**
+```tsx
+// app/layout.tsx — npm i antd @ant-design/nextjs-registry
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+<body><AntdRegistry layer><ConfigProvider theme={...}>{children}</ConfigProvider></AntdRegistry></body>
+```
+```css
+/* globals.css — antd debajo de las utilities de Tailwind */
+@layer theme, base, antd, components, utilities;
+@import 'tailwindcss';
+```
+`layer` mete antd en `@layer antd` (baja su especificidad) y el
+`ConfigProvider` tiene que ir adentro. En SSR, chequear en el HTML que la
+declaración `@layer … antd` cargue **antes** del `<style>` que inyecta antd
+(sección "SSR Scene" de `compatible-style.en-US.md`); si no, Tailwind pierde.
+En App Router, subcomponentes por path (no `<Select.Option />`
+ni `<Typography.Text />`). `message`/`Modal`/`notification`: usar `App` + hooks
+(`App.useApp()`), los estáticos no heredan el theme. Perf: `theme.zeroRuntime`
++ CSS precompilado dentro de `layer(antd)`; `theme.cssVar` para compartir tokens
+con Tailwind.
+
+**Tematizar con la dirección elegida — solo por tokens, nunca CSS suelto:**
+- `ConfigProvider theme={{ algorithm: [theme.darkAlgorithm], token: {...}, components: {...} }}`.
+- Seeds mínimos: `colorPrimary` (el acento de la dirección), `colorBgBase`/`colorTextBase` (fondo oscuro con tinte, no negro puro), `fontFamily` (la de la dirección: **pisa el stack de sistema de antd**, que Dynexo banea), `borderRadius`, `fontSize` (14 está bien en Operate). `compactAlgorithm` para tablas densas.
+- Ajustes por componente en `theme.components.<Comp>`; leer tokens con `theme.useToken()`.
+- Reglas del sistema que se respetan: un solo botón `primary` por decisión; grilla de 4px; tres capas de superficie (layout → container → elevated); flat-first (bordes y tono antes que sombras); colores preset (`blue`…`lime`) solo para tags/charts; motion con los tokens (`motionDurationMid` 0.2s y easings nombrados).
+- El signature de la dirección vive en el shell (header, empty states, onboarding, un KPI hero), no en cada control. Los controles se quedan quietos y certeros.
+
+**Spec como checklist de UX densa** (`ant-design\docs\spec\`): `data-entry`,
+`data-list`, `data-display`, `data-format`, `detail-page`, `feedback`,
+`navigation`, `visualization-page`, `copywriting`, `buttons`, `dark`,
+`motion`; investigación con casos reales en `research-form`, `research-list`,
+`research-workbench`, `research-empty`, `research-exception`, `research-result`,
+`research-navigation`, `research-message-and-feedback`. Cruzarlos con
+Impeccable `harden`, `onboard` y `clarify` (empty states, errores, resultados).
+
+**API y demos:** `components/<comp>/index.en-US.md` + `demo/*.tsx` en el clone.
+Opcional si hace falta más: CLI `npx @ant-design/cli info|doc|demo|token|semantic|lint`
+o MCP (`npx -y @ant-design/cli mcp`), ambos offline.
+
+**`DESIGN.md` como plantilla:** el de antd sigue el formato google-labs
+design.md (tokens en YAML + prosa con el porqué). Usarlo de molde para documentar
+el sistema de cada cliente; es el mismo `DESIGN.md` que la Fase 4 traduce a
+`frame.md`.
+
+---
+
+## Arquitectura (System Design Primer) — cuando hay datos detrás de la UI
+
+La UI premium se cae si la página tarda o el stock miente. Usar el primer para
+decidir **lo justo**, no para sobre-diseñar: casi todo cliente Dynexo (pyme)
+entra en un monolito Next.js en Vercel + Turso/SQLite. Microservicios, sharding
+y colas distribuidas solo con números que los justifiquen.
+
+- **Cuentas de servilleta** (`### Back-of-the-envelope calculations`, apéndice de latencias y potencias de 2): estimar visitas, lecturas/escrituras por segundo y peso de datos antes de elegir nada.
+- **Cache en capas** (`## Cache`, `## Content delivery network`): CDN/edge para estático e imágenes; páginas estáticas o ISR con `revalidate`/tags; cache de consultas en el server; invalidar al escribir (write-through vs cache-aside según el caso).
+- **Base de datos** (`## Database`): SQL por defecto; índices en lo que se filtra/ordena; réplicas de lectura (Turso embedded replicas) si hay mucha lectura; desnormalizar solo lo que el dashboard lee siempre junto.
+- **Consistencia** (`## Availability vs consistency`, `## Consistency patterns`): fuerte para stock, turnos, pagos (no vender dos veces el mismo turno); eventual para contadores, analytics, rankings.
+- **Async** (`## Asynchronism`): mails, WhatsApp, webhooks de pago y generación de PDFs fuera del request (cola/tarea en background); la UI muestra estado optimista o "procesando".
+- **Seguridad** (`## Security`): validar input en el server, cifrar en tránsito, mínimo privilegio en tokens y claves.
+- **Caso de referencia:** `solutions/system_design/scaling_aws/README.md` para el camino de escalar por etapas.
+
+Salida en Fase 0: 5–10 líneas con casos de uso, estimación de carga y la
+decisión de datos/cache/async. En Fase 3, `audit`/`optimize` verifica que la UI
+respete esa arquitectura (loading/empty/error states para cada fetch).
 
 ---
 
@@ -205,4 +294,6 @@ Comentarios solo en animaciones complejas (timing/ease) y lógica GSAP no obvia.
 - [ ] Fully responsive + `prefers-reduced-motion` respetado.
 - [ ] Foco de teclado visible; a11y ok.
 - [ ] Copy en voz activa, específico, consistente en todo el flujo.
+- [ ] Si es Operate con antd: tematizado solo por tokens (acento, fondo, fuente de la dirección), sin el azul `#1677FF` ni la fuente de sistema por default.
+- [ ] Si hay datos: arquitectura decidida en Fase 0 (cache, consistencia, async) y cada fetch con loading/empty/error.
 - [ ] ¿Podría confundirse con una template o output de IA? Si sí → volver a Fase 1.
